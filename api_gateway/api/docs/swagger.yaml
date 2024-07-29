@@ -1,0 +1,1254 @@
+definitions:
+  forum.CategoryCreateReq:
+    properties:
+      name:
+        type: string
+    type: object
+  forum.CategoryGetAllRes:
+    properties:
+      category:
+        items:
+          $ref: '#/definitions/forum.CategoryRes'
+        type: array
+    type: object
+  forum.CategoryRes:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  forum.Comment:
+    properties:
+      body:
+        type: string
+      id:
+        type: string
+      post_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  forum.CommentCreateReq:
+    properties:
+      body:
+        type: string
+      post_id:
+        type: string
+      user_id:
+        type: string
+    type: object
+  forum.CommentGetAllRes:
+    properties:
+      comment:
+        items:
+          $ref: '#/definitions/forum.CommentRes'
+        type: array
+    type: object
+  forum.CommentRes:
+    properties:
+      body:
+        type: string
+      id:
+        type: string
+      post:
+        $ref: '#/definitions/forum.PostRes'
+      user:
+        $ref: '#/definitions/forum.UserResp'
+    type: object
+  forum.PopularTag:
+    properties:
+      count:
+        type: integer
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  forum.Post:
+    properties:
+      body:
+        type: string
+      category_id:
+        type: string
+      id:
+        type: string
+      title:
+        type: string
+      user_id:
+        type: string
+    type: object
+  forum.PostCreateReq:
+    properties:
+      body:
+        type: string
+      category_id:
+        type: string
+      title:
+        type: string
+      user_id:
+        type: string
+    type: object
+  forum.PostGetAllRes:
+    properties:
+      post:
+        items:
+          $ref: '#/definitions/forum.PostRes'
+        type: array
+    type: object
+  forum.PostRes:
+    properties:
+      body:
+        type: string
+      category:
+        $ref: '#/definitions/forum.CategoryRes'
+      id:
+        type: string
+      title:
+        type: string
+      user:
+        $ref: '#/definitions/forum.UserResp'
+    type: object
+  forum.PostTags:
+    properties:
+      id:
+        type: string
+      post_id:
+        type: string
+      tag_id:
+        type: string
+    type: object
+  forum.PostTagsCreateReq:
+    properties:
+      post_id:
+        type: string
+      tag_id:
+        type: string
+    type: object
+  forum.PostTagsGetAllRes:
+    properties:
+      posttag:
+        items:
+          $ref: '#/definitions/forum.PostTagsRes'
+        type: array
+    type: object
+  forum.PostTagsRes:
+    properties:
+      id:
+        type: string
+      post:
+        $ref: '#/definitions/forum.PostRes'
+      tag:
+        $ref: '#/definitions/forum.TagRes'
+    type: object
+  forum.TagCreateReq:
+    properties:
+      name:
+        type: string
+    type: object
+  forum.TagGetAllRes:
+    properties:
+      tag:
+        items:
+          $ref: '#/definitions/forum.TagRes'
+        type: array
+    type: object
+  forum.TagRes:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    type: object
+  forum.UserResp:
+    properties:
+      email:
+        type: string
+      id:
+        type: string
+      username:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /categories:
+    get:
+      consumes:
+      - application/json
+      description: Get all categories
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.CategoryGetAllRes'
+        "400":
+          description: Invalid parameters
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all categories
+      tags:
+      - category
+  /categories/{category_id}/posts:
+    get:
+      consumes:
+      - application/json
+      description: Get all posts by category
+      parameters:
+      - description: CategoryId
+        in: query
+        name: category_id
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.PostGetAllRes'
+        "400":
+          description: Invalid parameters
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all posts by category
+      tags:
+      - category
+  /category:
+    post:
+      consumes:
+      - application/json
+      description: Create a new category
+      parameters:
+      - description: Category data
+        in: body
+        name: category
+        required: true
+        schema:
+          $ref: '#/definitions/forum.CategoryCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.CategoryRes'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Create category
+      tags:
+      - category
+  /category/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a category by ID
+      parameters:
+      - description: Category ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Category deleted
+          schema:
+            type: string
+        "400":
+          description: Invalid category ID
+          schema:
+            type: string
+        "404":
+          description: Category not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Delete category
+      tags:
+      - category
+    get:
+      consumes:
+      - application/json
+      description: Get a category by ID
+      parameters:
+      - description: Category ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.CategoryRes'
+        "400":
+          description: Invalid category ID
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get category
+      tags:
+      - category
+    put:
+      consumes:
+      - application/json
+      description: Update an existing category
+      parameters:
+      - description: Category ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Updated category data
+        in: body
+        name: category
+        required: true
+        schema:
+          $ref: '#/definitions/forum.CategoryCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.CategoryRes'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "404":
+          description: Comment not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update category
+      tags:
+      - category
+  /comment:
+    post:
+      consumes:
+      - application/json
+      description: Create a new comment
+      parameters:
+      - description: Comment data
+        in: body
+        name: comment
+        required: true
+        schema:
+          $ref: '#/definitions/forum.CommentCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.Comment'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Create comment
+      tags:
+      - comment
+  /comment/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a comment by ID
+      parameters:
+      - description: Comment ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Comment deleted
+          schema:
+            type: string
+        "400":
+          description: Invalid comment ID
+          schema:
+            type: string
+        "404":
+          description: Comment not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Delete comment
+      tags:
+      - comment
+    get:
+      consumes:
+      - application/json
+      description: Get a comment by ID
+      parameters:
+      - description: Comment ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.CommentRes'
+        "400":
+          description: Invalid comment ID
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get comment
+      tags:
+      - comment
+    put:
+      consumes:
+      - application/json
+      description: Update an existing comment
+      parameters:
+      - description: Comment ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Updated comment data
+        in: body
+        name: comment
+        required: true
+        schema:
+          $ref: '#/definitions/forum.CommentCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.Comment'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "404":
+          description: Comment not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update comment
+      tags:
+      - comment
+  /comments:
+    get:
+      consumes:
+      - application/json
+      description: Get all comments
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.CommentGetAllRes'
+        "400":
+          description: Invalid parameters
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all comments
+      tags:
+      - comment
+  /post:
+    post:
+      consumes:
+      - application/json
+      description: Create a new post
+      parameters:
+      - description: Post data
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/forum.PostCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.Post'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Create post
+      tags:
+      - post
+  /post/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a post by ID
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Post deleted
+          schema:
+            type: string
+        "400":
+          description: Invalid post ID
+          schema:
+            type: string
+        "404":
+          description: Post not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Delete post
+      tags:
+      - post
+    get:
+      consumes:
+      - application/json
+      description: Get a post by ID
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.PostRes'
+        "400":
+          description: Invalid post ID
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get post
+      tags:
+      - post
+    put:
+      consumes:
+      - application/json
+      description: Update an existing post
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Updated post data
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/forum.PostCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.Post'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "404":
+          description: Post not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update post
+      tags:
+      - post
+  /post_tag:
+    post:
+      consumes:
+      - application/json
+      description: Create a new post_tag
+      parameters:
+      - description: Post data
+        in: body
+        name: post_tag
+        required: true
+        schema:
+          $ref: '#/definitions/forum.PostTagsCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.PostTags'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Create post_tag
+      tags:
+      - post_tag
+  /post_tag/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a post_tag by ID
+      parameters:
+      - description: PostTag ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: PostTag deleted
+          schema:
+            type: string
+        "400":
+          description: Invalid post_tag ID
+          schema:
+            type: string
+        "404":
+          description: PostTag not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Delete post_tag
+      tags:
+      - post_tag
+    get:
+      consumes:
+      - application/json
+      description: Get a post_tag by ID
+      parameters:
+      - description: PostTag ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.PostTagsRes'
+        "400":
+          description: Invalid post_tag ID
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get post_tag
+      tags:
+      - post_tag
+    put:
+      consumes:
+      - application/json
+      description: Update an existing post_tag
+      parameters:
+      - description: PostTag ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Updated post_tag data
+        in: body
+        name: post_tag
+        required: true
+        schema:
+          $ref: '#/definitions/forum.PostTagsCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.PostTags'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "404":
+          description: PostTag not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update post_tag
+      tags:
+      - post_tag
+  /post_tags:
+    get:
+      consumes:
+      - application/json
+      description: Get all post_tags
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.PostTagsGetAllRes'
+        "400":
+          description: Invalid parameters
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all post_tags
+      tags:
+      - post_tag
+  /posts:
+    get:
+      consumes:
+      - application/json
+      description: Get all posts
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.PostGetAllRes'
+        "400":
+          description: Invalid parameters
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all posts
+      tags:
+      - post
+  /posts/{post_id}/comments:
+    get:
+      consumes:
+      - application/json
+      description: Get all comments post
+      parameters:
+      - description: PostId
+        in: query
+        name: post_id
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.CommentGetAllRes'
+        "400":
+          description: Invalid parameters
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all comments by post
+      tags:
+      - post
+  /posts/search:
+    get:
+      consumes:
+      - application/json
+      description: Get all posts
+      parameters:
+      - description: Title
+        in: query
+        name: title
+        type: string
+      - description: Body
+        in: query
+        name: body
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.PostGetAllRes'
+        "400":
+          description: Invalid parameters
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all posts
+      tags:
+      - post
+  /tag:
+    post:
+      consumes:
+      - application/json
+      description: Create a new tag
+      parameters:
+      - description: Tag data
+        in: body
+        name: tag
+        required: true
+        schema:
+          $ref: '#/definitions/forum.TagCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.TagRes'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Create tag
+      tags:
+      - tag
+  /tag/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a tag by ID
+      parameters:
+      - description: Tag ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Tag deleted
+          schema:
+            type: string
+        "400":
+          description: Invalid tag ID
+          schema:
+            type: string
+        "404":
+          description: Tag not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Delete tag
+      tags:
+      - tag
+    get:
+      consumes:
+      - application/json
+      description: Get a tag by ID
+      parameters:
+      - description: Tag ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.TagRes'
+        "400":
+          description: Invalid tag ID
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get tag
+      tags:
+      - tag
+    put:
+      consumes:
+      - application/json
+      description: Update an existing tag
+      parameters:
+      - description: Tag ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Updated tag data
+        in: body
+        name: tag
+        required: true
+        schema:
+          $ref: '#/definitions/forum.TagCreateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.TagRes'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "404":
+          description: Comment not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Update tag
+      tags:
+      - tag
+  /tags:
+    get:
+      consumes:
+      - application/json
+      description: Get all tags
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.TagGetAllRes'
+        "400":
+          description: Invalid parameters
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all tags
+      tags:
+      - tag
+  /tags/{tag_id}/posts:
+    get:
+      consumes:
+      - application/json
+      description: Get all posts by tag
+      parameters:
+      - description: TagId
+        in: query
+        name: tag_id
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.PostGetAllRes'
+        "400":
+          description: Invalid parameters
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all posts by tag
+      tags:
+      - tag
+  /tags/popular:
+    get:
+      consumes:
+      - application/json
+      description: Get popular tag
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.PopularTag'
+        "400":
+          description: Invalid parameters
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get popular tag
+      tags:
+      - tag
+  /users/{user_id}/posts:
+    get:
+      consumes:
+      - application/json
+      description: Get all posts user
+      parameters:
+      - description: UserId
+        in: query
+        name: user_id
+        type: string
+      - description: Limit
+        in: query
+        name: limit
+        type: integer
+      - description: Offset
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/forum.PostGetAllRes'
+        "400":
+          description: Invalid parameters
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get all posts by user
+      tags:
+      - user
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

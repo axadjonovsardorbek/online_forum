@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option go_package = "genproto/forum";
+
+package forum;
+
+import "common.proto";
+
+service CategoryService {
+    rpc Create(CategoryCreateReq) returns(CategoryRes){}
+    rpc GetById(GetByIdReq) returns(CategoryRes){}
+    rpc GetAll(Filter) returns(CategoryGetAllRes){}
+    rpc Update(CategoryUpdate) returns(CategoryRes){}
+    rpc Delete(GetByIdReq) returns(Void){}
+}
+
+message CategoryCreateReq{
+    string name = 1;
+}
+
+message CategoryRes{
+    string id = 1;
+    string name = 2;
+}
+
+message CategoryGetAllRes{
+    repeated CategoryRes category = 1;
+}
+
+message CategoryUpdate{
+    string id = 1;
+    CategoryCreateReq category = 2;
+}

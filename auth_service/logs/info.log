@@ -1,0 +1,11 @@
+[ERROR]  2024/06/17 15:39:22 checkErr.go:17: pq: database "auth_forum" does not exist
+[INFO]  2024/06/17 15:40:33 main.go:32: Server is running on port  :8088
+[INFO]  2024/06/17 15:41:21 main.go:32: Server is running on port  :8088
+[INFO]  2024/06/17 15:50:33 main.go:32: Server is running on port  :8088
+[INFO]  2024/06/18 16:19:38 main.go:32: Server is running on port  :8088
+[INFO]  2024/06/19 14:13:39 main.go:32: Server is running on port  :8088
+[INFO]  2024/06/19 14:18:45 main.go:32: Server is running on port  :8088
+[INFO]  2024/06/20 12:36:06 main.go:32: Server is running on port  :8088
+[INFO]  2024/06/20 14:07:36 main.go:32: Server is running on port  :8088
+[INFO]  2024/07/10 17:20:02 main.go:32: Server is running on port  :8088
+[INFO]  2024/07/11 13:40:22 main.go:32: Server is running on port  :8088

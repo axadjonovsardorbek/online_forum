@@ -1,0 +1,167 @@
+[INFO]  2024/06/18 18:11:42 category.go:49: Successfully created category
+[INFO]  2024/06/18 18:12:01 category.go:138: Successfully fetched all categories
+[INFO]  2024/06/18 18:12:24 category.go:81: Successfully got category
+[ERROR]  2024/06/18 18:12:55 category.go:169: Error while updating category :  pq: got 2 parameters but the statement requires 1
+[ERROR]  2024/06/18 18:13:03 category.go:169: Error while updating category :  pq: got 2 parameters but the statement requires 1
+[INFO]  2024/06/18 18:33:15 category.go:173: Successfully updated category
+[INFO]  2024/06/18 18:33:40 category.go:81: Successfully got category
+[INFO]  2024/06/18 18:40:22 category.go:81: Successfully got category
+[INFO]  2024/06/18 18:40:33 category.go:195: Successfully deleted category
+[ERROR]  2024/06/18 18:40:44 category.go:184: Error while deleting category :  pq: invalid input syntax for type uuid: "b9e6e802-6ba9-4a29-bb31-a214c9adafer"
+[ERROR]  2024/06/18 18:40:45 category.go:184: Error while deleting category :  pq: invalid input syntax for type uuid: "b9e6e802-6ba9-4a29-bb31-a214c9adafer"
+[ERROR]  2024/06/18 18:40:52 category.go:77: Error while getting category by id :  sql: no rows in result set
+[ERROR]  2024/06/18 18:41:01 category.go:169: Error while updating category :  sql: no rows in result set
+[INFO]  2024/06/18 18:41:09 category.go:138: Successfully fetched all categories
+[INFO]  2024/06/18 18:54:37 tag.go:137: Successfully fetched all tags
+[INFO]  2024/06/18 18:55:05 tag.go:48: Successfully created tag
+[INFO]  2024/06/18 18:55:17 tag.go:80: Successfully got tag
+[ERROR]  2024/06/18 18:55:29 tag.go:168: Error while updating tag :  pq: got 2 parameters but the statement requires 1
+[INFO]  2024/06/18 18:56:17 tag.go:172: Successfully updated tag
+[INFO]  2024/06/18 18:56:33 tag.go:194: Successfully deleted tag
+[INFO]  2024/06/18 18:56:46 tag.go:137: Successfully fetched all tags
+[ERROR]  2024/06/18 18:56:54 tag.go:76: Error while getting tag by id :  sql: no rows in result set
+[INFO]  2024/06/19 02:10:15 category.go:138: Successfully fetched all categories
+[INFO]  2024/06/19 14:21:05 category.go:138: Successfully fetched all categories
+[INFO]  2024/06/19 14:22:02 tag.go:137: Successfully fetched all tags
+[INFO]  2024/06/19 14:49:57 comment.go:315: Successfully deleted comment
+[ERROR]  2024/06/19 14:50:06 comment.go:97: Error while retrieving comment details: sql: no rows in result set
+[ERROR]  2024/06/19 15:12:33 post.go:293: Error while retrieving posts: pq: invalid input syntax for type uuid: ""
+[ERROR]  2024/06/19 15:12:35 post.go:293: Error while retrieving posts: pq: invalid input syntax for type uuid: ""
+[ERROR]  2024/06/19 15:12:36 post.go:293: Error while retrieving posts: pq: invalid input syntax for type uuid: ""
+[INFO]  2024/06/19 15:14:04 category.go:138: Successfully fetched all categories
+[INFO]  2024/06/19 15:14:21 post.go:58: Successfully created post
+[INFO]  2024/06/19 15:22:36 category.go:138: Successfully fetched all categories
+[ERROR]  2024/06/19 15:23:59 post.go:293: Error while retrieving posts: pq: invalid input syntax for type uuid: ""
+[ERROR]  2024/06/19 15:24:01 post.go:293: Error while retrieving posts: pq: invalid input syntax for type uuid: ""
+[ERROR]  2024/06/19 15:24:59 post.go:293: Error while retrieving posts: pq: invalid input syntax for type uuid: ""
+[ERROR]  2024/06/19 15:25:01 post.go:293: Error while retrieving posts: pq: invalid input syntax for type uuid: ""
+[ERROR]  2024/06/19 15:25:01 post.go:293: Error while retrieving posts: pq: invalid input syntax for type uuid: ""
+[ERROR]  2024/06/19 15:25:01 post.go:293: Error while retrieving posts: pq: invalid input syntax for type uuid: ""
+[INFO]  2024/06/19 15:26:29 category.go:138: Successfully fetched all categories
+[ERROR]  2024/06/19 15:26:41 post.go:293: Error while retrieving posts: pq: invalid input syntax for type uuid: ""
+[ERROR]  2024/06/19 15:28:26 post.go:293: Error while retrieving posts: pq: invalid input syntax for type uuid: ""
+[ERROR]  2024/06/19 15:30:30 post.go:293: Error while retrieving posts: pq: invalid input syntax for type uuid: ""
+[ERROR]  2024/06/19 15:49:23 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:49:24 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:49:44 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:50:27 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:50:29 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:51:21 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:51:23 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:51:23 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:51:24 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:51:26 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:51:26 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:51:27 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:51:29 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:52:18 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:52:19 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:52:19 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:52:20 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:52:21 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:52:21 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:52:22 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:56:50 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:57:33 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:35 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:36 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:36 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:36 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:36 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:37 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:38 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:38 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:38 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:39 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:39 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:39 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:40 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:40 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:40 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:40 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:41 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:41 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:41 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:41 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:42 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:42 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:42 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:42 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:42 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:43 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:43 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:57:43 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 15:58:22 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:58:23 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:58:24 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:58:24 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 15:58:25 post.go:433: Error while retrieving posts: pq: could not determine data type of parameter $1
+[ERROR]  2024/06/19 16:02:19 post.go:433: Error while retrieving posts: pq: syntax error at or near "%"
+[ERROR]  2024/06/19 16:13:08 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:09 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:14 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:16 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:16 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:17 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:17 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:18 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:18 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:18 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:19 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:19 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:20 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:20 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:20 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:20 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:21 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:21 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:21 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:21 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:21 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:21 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:22 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:13:22 post.go:441: Error while retrieving posts: pq: syntax error at or near "ostgres"
+[ERROR]  2024/06/19 16:14:27 post.go:441: Error while retrieving posts: pq: syntax error at or near "("
+[ERROR]  2024/06/19 16:14:29 post.go:441: Error while retrieving posts: pq: syntax error at or near "("
+[ERROR]  2024/06/19 16:14:30 post.go:441: Error while retrieving posts: pq: syntax error at or near "("
+[ERROR]  2024/06/19 16:14:30 post.go:441: Error while retrieving posts: pq: syntax error at or near "("
+[ERROR]  2024/06/19 16:14:31 post.go:441: Error while retrieving posts: pq: syntax error at or near "("
+[ERROR]  2024/06/19 16:14:31 post.go:441: Error while retrieving posts: pq: syntax error at or near "("
+[ERROR]  2024/06/19 16:14:32 post.go:441: Error while retrieving posts: pq: syntax error at or near "("
+[INFO]  2024/06/19 16:24:33 post_tag.go:275: Successfully deleted post tag
+[ERROR]  2024/06/19 16:24:39 post_tag.go:97: Error while retrieving post_tag details: sql: no rows in result set
+[ERROR]  2024/06/19 16:24:40 post_tag.go:97: Error while retrieving post_tag details: sql: no rows in result set
+[INFO]  2024/06/19 17:03:24 category.go:138: Successfully fetched all categories
+[INFO]  2024/06/19 17:07:19 category.go:138: Successfully fetched all categories
+[ERROR]  2024/06/19 17:07:25 post_tag.go:388: Error while retrieving tag details: pq: syntax error at or near "DESC"
+[ERROR]  2024/06/19 17:07:28 post_tag.go:388: Error while retrieving tag details: pq: syntax error at or near "DESC"
+[ERROR]  2024/06/19 17:10:44 post_tag.go:388: Error while retrieving tag details: pq: column "t.id" must appear in the GROUP BY clause or be used in an aggregate function
+[INFO]  2024/06/19 17:12:15 post_tag.go:52: Successfully created post_tag
+[INFO]  2024/06/19 17:48:23 tag.go:137: Successfully fetched all tags
+[ERROR]  2024/06/19 22:44:04 post.go:293: Error while retrieving posts: pq: invalid input syntax for type uuid: ""
+[INFO]  2024/06/19 22:49:41 category.go:49: Successfully created category
+[INFO]  2024/06/19 22:51:08 post.go:58: Successfully created post
+[INFO]  2024/06/19 22:52:28 tag.go:48: Successfully created tag
+[INFO]  2024/06/19 22:56:05 post_tag.go:52: Successfully created post_tag
+[INFO]  2024/06/19 23:02:50 post_tag.go:52: Successfully created post_tag
+[INFO]  2024/06/19 23:05:12 post_tag.go:52: Successfully created post_tag
+[INFO]  2024/06/19 23:16:43 category.go:138: Successfully fetched all categories
+[INFO]  2024/06/19 23:17:35 category.go:81: Successfully got category
+[INFO]  2024/06/19 23:17:58 category.go:173: Successfully updated category
+[INFO]  2024/06/19 23:18:06 category.go:81: Successfully got category
+[INFO]  2024/06/19 23:18:35 category.go:138: Successfully fetched all categories
+[INFO]  2024/06/19 23:18:50 category.go:195: Successfully deleted category
+[INFO]  2024/06/19 23:19:09 category.go:138: Successfully fetched all categories
+[INFO]  2024/06/19 23:22:34 comment.go:55: Successfully created comment
+[INFO]  2024/06/19 23:23:03 comment.go:55: Successfully created comment
+[INFO]  2024/06/19 23:23:50 comment.go:55: Successfully created comment
+[INFO]  2024/06/19 23:30:37 comment.go:315: Successfully deleted comment
+[ERROR]  2024/06/19 23:30:56 comment.go:97: Error while retrieving comment details: sql: no rows in result set
+[INFO]  2024/06/19 23:36:54 tag.go:137: Successfully fetched all tags
+[INFO]  2024/06/20 12:38:27 category.go:138: Successfully fetched all categories
+[INFO]  2024/06/20 12:39:44 category.go:138: Successfully fetched all categories
+[INFO]  2024/06/20 14:10:06 category.go:138: Successfully fetched all categories
+[INFO]  2024/06/20 16:14:28 tag.go:137: Successfully fetched all tags
+[INFO]  2024/06/20 16:25:58 category.go:138: Successfully fetched all categories
+[INFO]  2024/06/20 17:37:18 category.go:138: Successfully fetched all categories
+[ERROR]  2024/07/10 17:16:46 checkErr.go:17: dial tcp: lookup host.docker.internal: no such host

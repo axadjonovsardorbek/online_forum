@@ -1,0 +1,145 @@
+definitions:
+  models.GetProfileResp:
+    properties:
+      email:
+        description: User's email address
+        type: string
+      id:
+        description: User's unique identifier
+        type: string
+      password:
+        description: User's password
+        type: string
+      username:
+        description: User's username
+        type: string
+    type: object
+  models.LoginReq:
+    properties:
+      email:
+        description: User's email
+        type: string
+      password:
+        description: User's password
+        type: string
+    type: object
+  models.RegisterReq:
+    properties:
+      email:
+        description: User's email address
+        type: string
+      id:
+        description: User's unique identifier
+        type: string
+      password:
+        description: User's password
+        type: string
+      username:
+        description: User's username
+        type: string
+    type: object
+  token.Tokens:
+    properties:
+      access_token:
+        type: string
+      refresh_token:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate user with email and password
+      parameters:
+      - description: User login credentials
+        in: body
+        name: credentials
+        required: true
+        schema:
+          $ref: '#/definitions/models.LoginReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: JWT tokens
+          schema:
+            $ref: '#/definitions/token.Tokens'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "401":
+          description: Invalid email or password
+          schema:
+            type: string
+      summary: Login a user
+      tags:
+      - auth
+  /profile:
+    get:
+      consumes:
+      - application/json
+      description: Get the profile of the authenticated user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.GetProfileResp'
+        "401":
+          description: Unauthorized
+          schema:
+            type: string
+        "404":
+          description: User not found
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      security:
+      - BearerAuth: []
+      summary: Get user profile
+      tags:
+      - user
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user with email, username, and password
+      parameters:
+      - description: User registration request
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.RegisterReq'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: JWT tokens
+          schema:
+            $ref: '#/definitions/token.Tokens'
+        "400":
+          description: Invalid request payload
+          schema:
+            type: string
+        "500":
+          description: Server error
+          schema:
+            type: string
+      summary: Register a new user
+      tags:
+      - auth
+securityDefinitions:
+  BearerAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
