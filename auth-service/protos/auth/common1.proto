@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option go_package = "genproto/auth";
+
+package auth;
+
+message Void{}
+
+message ById{
+    string id = 1;
+}

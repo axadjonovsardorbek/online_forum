@@ -1,0 +1,10 @@
+INSERT INTO users (id, email, password, username, phone, created_at, updated_at, deleted_at) VALUES
+('91cf6e44-d61a-4e81-8516-f906ef8c53e8', 'axadjonovsardorbeck@gmail.com', '$2a$10$DCHM3DqLWoA.lgdqM7Tkk.Qdq/OHMkBq5DaM6TCYpQQKmdF7tmfQW', 'SardorAxadjonov', '+998200070424', '2024-08-13 13:39:43.540641+05', '2024-08-13 13:39:43.540641+05', 0),
+('91cf6e44-d61a-4e81-8516-f906ef8c53f9', 'axadjonovsardorbekk@gmail.com', '$2a$10$DCHM3DqLWoA.lgdqM7Tkk.Qdq/OHMkBq5DaM6TCYpQQKmdF7tmfQW', 'SardorAxadjonov', '+998909082075', '2024-08-13 13:39:43.540641+05', '2024-08-13 13:39:43.540641+05', 0),
+('b2c9f3f4-9c8a-42e1-97a3-72a2f1e2a1e6', 'john.doe@example.com', '$2a$10$DCHM3DqLWoA.lgdqM7Tkk.Qdq/OHMkBq5DaM6TCYpQQKmdF7tmfQW', 'JohnDoe', '+998901234567',  '2024-08-13 14:00:00.000000+05', '2024-08-13 14:00:00.000000+05', 0),
+('d3f5a3f7-3c7c-4d1f-8092-2a3d6f7e4c1d', 'jane.smith@example.com', '$2a$10$DCHM3DqLWoA.lgdqM7Tkk.Qdq/OHMkBq5DaM6TCYpQQKmdF7tmfQW', 'JaneSmith', '+998902345678',  '2024-08-13 14:15:00.000000+05', '2024-08-13 14:15:00.000000+05', 0),
+('e6c9b5f4-9b7a-43e1-87b3-32a3e1e4f3f5', 'alice.wonder@example.com', '$2a$10$DCHM3DqLWoA.lgdqM7Tkk.Qdq/OHMkBq5DaM6TCYpQQKmdF7tmfQW', 'AliceWonder', '+998903456789',  '2024-08-13 14:30:00.000000+05', '2024-08-13 14:30:00.000000+05', 0),
+('00000000-0000-0000-0000-000000000001', 'johndoe@example.com', '$2a$10$DCHM3DqLWoA.lgdqM7Tkk.Qdq/OHMkBq5DaM6TCYpQQKmdF7tmfQW', 'johndoe', '1234567890', '2024-08-13 13:39:43.540641+05', '2024-08-13 13:39:43.540641+05', 0),
+('00000000-0000-0000-0000-000000000002', 'janedoe@example.com', '$2a$10$DCHM3DqLWoA.lgdqM7Tkk.Qdq/OHMkBq5DaM6TCYpQQKmdF7tmfQW', 'janedoe', '0987654321', '2024-08-13 13:39:43.540641+05', '2024-08-13 13:39:43.540641+05', 0),
+('11111111-1111-1111-1111-111111111111', 'user1@example.com', '$2a$10$DCHM3DqLWoA.lgdqM7Tkk.Qdq/OHMkBq5DaM6TCYpQQKmdF7tmfQW', 'user1', '1231231234', '2024-08-13 13:39:43.540641+05', '2024-08-13 13:39:43.540641+05', 0),
+('22222222-2222-2222-2222-222222222222', 'user2@example.com', '$2a$10$DCHM3DqLWoA.lgdqM7Tkk.Qdq/OHMkBq5DaM6TCYpQQKmdF7tmfQW', 'user2', '3213213210', '2024-08-13 13:39:43.540641+05', '2024-08-13 13:39:43.540641+05', 0);

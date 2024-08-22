@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+option go_package = "genproto/forum";
+
+package forum;
+
+import "common.proto";
+import "post.proto";
+import "tag.proto";
+
+service PostTagsService {
+    rpc Create(PostTagsCreateReq) returns(PostTags){}
+    rpc GetById(GetByIdReq) returns(PostTagsRes){}
+    rpc GetAll(Filter) returns(PostTagsGetAllRes){}
+    rpc Update(PostTagsUpdate) returns(PostTags){}
+    rpc Delete(GetByIdReq) returns(Void){}
+    rpc GetPostByTag(GetFilter) returns(PostTagsGetAllRes){}
+    rpc GetPopularTag(Void) returns(PopularTag){}
+}
+
+message PostTagsCreateReq{
+    string post_id = 1;
+    string tag_id = 2;
+}
+
+message PostTagsRes{
+    string id = 1;
+    PostRes post = 2;
+    TagRes tag = 3;
+}
+
+message PostTags{
+    string id = 1;
+    string post_id = 2;
+    string tag_id = 3;
+}
+
+message PostTagsGetAllRes{
+    repeated PostTagsRes posttag = 1;
+}
+
+message PostTagsUpdate{
+    string id = 1;
+    PostTagsCreateReq posttag = 2;
+}
+
+message PopularTag{
+    int32 count = 1;
+    string id = 2;
+    string name = 3;
+}

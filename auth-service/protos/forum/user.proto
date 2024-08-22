@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option go_package = "genproto/forum";
+
+package forum;
+
+service UserService {
+    rpc GetById(UserGetByIdReq) returns (UserGetByIdResp){};
+    rpc Create(UserCreateReq) returns (UserGetByIdResp){};
+};
+
+
+message UserGetByIdReq {
+    string id = 1;
+};
+
+message UserGetByIdResp {
+    string id = 1;
+    string username = 2;
+    string email = 3;
+    string password = 4;
+};
+
+message UserResp {
+    string id = 1;
+    string username = 2;
+    string email = 3;
+}
+
+message UserCreateReq {
+    string username = 1;
+    string email = 2;
+    string password = 3;
+};
+
+message UserGetAllResp {
+    repeated UserGetByIdResp users = 1;
+    int32 count = 2;
+};

@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option go_package = "genproto/forum";
+
+package forum;
+
+import "common.proto";
+import "post.proto";
+import "user.proto";
+
+service CommentService {
+    rpc Create(CommentCreateReq) returns(Comment){}
+    rpc GetById(GetByIdReq) returns(CommentRes){}
+    rpc GetAll(Filter) returns(CommentGetAllRes){}
+    rpc Update(CommentUpdate) returns(Comment){}
+    rpc Delete(GetByIdReq) returns(Void){}
+    rpc GetCommentByPost(GetFilter) returns(CommentGetAllRes){}
+}
+
+message CommentCreateReq{
+    string user_id = 1;
+    string post_id = 2;
+    string body = 3;
+}
+
+message Comment{
+    string id = 1;
+    string user_id = 2;
+    string post_id = 3;
+    string body = 4;
+}
+
+message CommentRes{
+    string id = 1;
+    string body = 2;
+    UserResp user = 3;
+    PostRes post = 4;
+}
+
+message CommentGetAllRes{
+    repeated CommentRes comment = 1;
+}
+
+message CommentUpdate{
+    string id = 1;
+    CommentCreateReq updateComment = 2;
+}

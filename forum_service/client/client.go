@@ -9,7 +9,7 @@ import (
 )
 
 func GetUser(id string) (*models.User, error) {
-	url := "http://auth:8088/user/" + id
+	url := "http://forum-auth:8004/user/" + id
 
 	resp, err := http.Get(url)
 	if err != nil {

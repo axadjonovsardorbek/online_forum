@@ -1,0 +1,143 @@
+version: '3.8'
+
+services:
+  migrate-auth:
+    image: migrate/migrate
+    networks: 
+      - forum
+    volumes:
+      - ./auth-service/migrations:/migrations
+    command: [ "-path", "/migrations", "-database", "postgres://postgres:1111@postgres-auth:5432/auth_forum?sslmode=disable", "up" ]
+    depends_on:
+      - postgres-auth
+
+  migrate-forum:
+    image: migrate/migrate
+    networks: 
+      - forum
+    volumes:
+      - ./forum_service/migrations:/migrations1
+    command: [ "-path", "/migrations1", "-database", "postgres://postgres:1111@postgres-forum:5432/forum?sslmode=disable", "up" ]
+    depends_on:
+      - postgres-forum
+
+  postgres-auth:
+    container_name: postgres-auth
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1111
+      PGDATA: /data/postgres
+      POSTGRES_DB: auth_forum
+    volumes:
+     - forum_data:/var/lib/postgres/data
+    ports:
+      - "5435:5332"
+    networks:
+      - forum
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  
+  postgres-forum:
+    container_name: postgres-forum
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1111
+      PGDATA: /data/postgres
+      POSTGRES_DB: forum
+    volumes:
+     - forum_data:/var/lib/postgres/data
+    ports:
+      - "5434:5433"
+    networks:
+      - forum
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  
+  forum-service:
+    container_name: forum
+    build: ./forum_service
+    depends_on:
+      - postgres-forum
+    ports:
+      - "50018:50018"
+    networks:
+      - forum     
+    
+  forum-gateway:
+    container_name: forum-gateway
+    build: ./api_gateway
+    depends_on:
+      - postgres-forum
+      - postgres-auth
+      - forum-service
+    ports:
+      - "8003:8003"
+    networks:
+      - forum
+
+  auth-service:
+    container_name: forum-auth
+    build: ./auth-service
+    depends_on: 
+      - postgres-auth
+      - kafka-forum
+      - redis-forum
+      - zookeeper-forum
+    ports:
+      - "8004:8004"
+    networks:
+      - forum
+
+
+  zookeeper-forum:
+    image: confluentinc/cp-zookeeper:7.4.4
+    container_name: zookeeper-forum
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 22181:2181
+    networks:
+      - forum
+ 
+  kafka-forum:
+    image: confluentinc/cp-kafka:7.4.4
+    container_name: kafka-forum
+    depends_on:
+      - zookeeper-forum
+    ports:
+      - 29092:29092
+    networks:
+      - forum
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper-forum:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-forum:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  redis-forum:
+    image: redis:latest
+    container_name: redis-forum
+    ports:
+      - "6379:6379"
+    networks:
+      - forum
+    
+networks:
+  forum:
+    driver: bridge
+
+volumes:
+  forum_data: 

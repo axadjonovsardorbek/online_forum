@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+option go_package = "genproto/forum";
+
+package forum;
+
+import "common.proto";
+import "category.proto";
+import "user.proto";
+
+service PostService {
+    rpc Create(PostCreateReq) returns(Post){}
+    rpc GetById(GetByIdReq) returns(PostRes){}
+    rpc GetAll(Filter) returns(PostGetAllRes){}
+    rpc Update(PostUpdate) returns(Post){}
+    rpc Delete(GetByIdReq) returns(Void){}
+    rpc GetPostByUser(GetFilter) returns(PostGetAllRes){}
+    rpc GetPostByCategory(GetFilter) returns(PostGetAllRes){}
+    rpc SearchPost(PostSearch) returns(PostGetAllRes){}
+}
+
+message PostCreateReq{
+    string user_id = 1;
+    string title = 2;
+    string body = 3;
+    string category_id = 4;
+}
+
+message PostRes{
+    string id = 1;
+    string title = 2;
+    string body = 3;
+    UserResp user = 4;
+    CategoryRes category = 5;
+}
+
+message Post{
+    string id = 1;
+    string user_id = 2;
+    string title = 3;
+    string body = 4;
+    string category_id = 5;
+}
+
+message GetFilter{
+    string id = 1;
+    int32 Limit = 2;
+    int32 Offset = 3;
+}
+
+message PostGetAllRes{
+    repeated PostRes post = 1;
+}
+
+message PostUpdate{
+    string id = 1;
+    PostCreateReq updatePost = 2;
+}
+
+message PostSearch{
+    string title = 1;
+    string body = 2;
+    int32 Limit = 3;
+    int32 Offset = 4;
+}

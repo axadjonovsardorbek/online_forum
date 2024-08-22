@@ -25,7 +25,7 @@ func NewGrpcClients(cfg *config.Config, l logger.Logger) (*GrpcClients, error) {
 	// if err != nil {
 	// 	return nil, err
 	// }
-	connF, err := grpc.NewClient(fmt.Sprintf("forum2%s", cfg.FORUM_SERVICE_PORT),
+	connF, err := grpc.NewClient(fmt.Sprintf("forum%s", cfg.FORUM_SERVICE_PORT),
 		grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		return nil, err

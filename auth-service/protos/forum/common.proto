@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option go_package = "genproto/forum";
+
+package forum;
+
+message Void {}
+
+message GetByIdReq {
+  string id = 1;
+}
+
+message Filter {
+  int32 limit = 1;
+  int32 offset = 2;
+}

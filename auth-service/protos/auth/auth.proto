@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+option go_package = "genproto/auth";
+
+package auth;
+
+import "common1.proto";
+
+service UserService{
+    rpc Register(UserCreateReq) returns(Void);
+    rpc Login(UserLoginReq) returns(TokenRes);
+    rpc Profile(ById) returns(UserRes);
+    rpc UpdateProfile(UserUpdateReq) returns(Void);
+    rpc DeleteProfile(ById) returns(Void);
+    rpc RefreshToken(ById) returns(TokenRes);
+    rpc ForgotPassword(UsersForgotPassword) returns(Void);
+    rpc ResetPassword(UsersResetPassword) returns(Void);
+    rpc ChangePassword(UsersChangePassword) returns(Void);
+    rpc CheckEmail(CheckEmailReq) returns(ById);
+    rpc GetAllUsers(GetAllUsersReq) returns(GetAllUsersRes);
+    rpc GetByID(ById) returns(UserRes);
+}
+
+message UserRes{
+    string id = 1;
+    string username = 2;
+    string phone = 5;
+    string email = 6;
+}
+
+message UserCreateReq{
+    string email = 1;
+    string password = 2;
+    string username = 3;
+    string phone = 4;
+}
+
+message UserLoginReq{
+    string email = 1;
+    string password = 2;
+}
+
+message UserUpdateReq{
+    string id = 1;
+    string username = 2;
+    string email = 4;
+}
+
+message TokenRes{
+    string token = 1;
+    string exp_at = 2;
+}
+
+message UsersForgotPassword{
+    string email = 1;
+}
+
+message UsersChangePassword{
+    string current_password = 1;
+    string new_password = 2;
+    string id = 3;
+}
+
+message UsersResetPassword{
+    string reset_token = 1;
+    string new_password = 2;
+    string email = 3;
+}
+
+message CheckEmailReq{
+    string email = 1;
+}
+
+message GetAllUsersReq{
+    int32 page = 1;
+}
+
+message GetAllUsersRes{
+    repeated UserRes users = 1;
+}
